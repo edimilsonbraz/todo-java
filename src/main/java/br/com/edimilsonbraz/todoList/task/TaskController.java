@@ -28,9 +28,16 @@ public class TaskController {
        var currentDate = LocalDateTime.now();
        //10-10-23 - current
        //10-09-23 - startAt
-       if (currentDate.isAfter(taskModel.getEndAt())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data de início deve ser maior do que a data atual");
+       if (currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter(taskModel.getEndAt())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body("A data de início e término deve ser maior do que a data atual");
        }
+
+       if (taskModel.getStartAt().isAfter(taskModel.getEndAt())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body("A data de término deve ser maior do que a data de início!");
+       }
+
 
        var task = this.taskRepository.save(taskModel);
        return ResponseEntity.status(HttpStatus.OK).body(task);
