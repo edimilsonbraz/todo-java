@@ -10,13 +10,19 @@
 	</parent>
 	<groupId>br.com.edimilsonbraz</groupId>
 	<artifactId>todoList</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>todoList</name>
 	<description>Gerenciador de tarefas</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -64,6 +70,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                	<excludeDevtools>false</excludeDevtools>
+            	</configuration>
 			</plugin>
 		</plugins>
 	</build>
